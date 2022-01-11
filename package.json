@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/styu12/wetube/issues"
   },
-  "homepage": "https://github.com/styu12/wetube#readme"
+  "homepage": "https://github.com/styu12/wetube#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
