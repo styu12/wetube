@@ -1,0 +1,19 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "Youtube clone with Node JS, Express, MongoDB, and ES6",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/styu12/wetube.git"
+  },
+  "author": "Seungoh <styu12@kakao.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/styu12/wetube/issues"
+  },
+  "homepage": "https://github.com/styu12/wetube#readme"
+}
