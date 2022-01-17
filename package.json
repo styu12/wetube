@@ -4,8 +4,8 @@
   "description": "Youtube clone with Node JS, Express, MongoDB, and ES6",
   "main": "index.js",
   "scripts": {
-    "build": "babel index.js -d dist",
-    "start": "npm run build && nodemon index.js"
+    "build": "babel src/index.js -d dist",
+    "start": "npm run build && nodemon src/index.js"
   },
   "repository": {
     "type": "git",
