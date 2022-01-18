@@ -1,11 +1,15 @@
 "use strict";
 
-var _express = _interopRequireDefault(require("express"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var express = require("express");
 
 var PORT = 4000;
-var app = (0, _express["default"])();
+var app = express();
+
+var handleHome = function handleHome(req, res) {
+  return res.send("My First Request!");
+};
+
+app.get("/", handleHome);
 
 var listenHandler = function listenHandler() {
   return console.log("Server listening on port http://localhost:".concat(PORT, " \uD83C\uDF87"));

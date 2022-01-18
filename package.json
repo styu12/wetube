@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/styu12/wetube#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
