@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Youtube clone with Node JS, Express, MongoDB, and ES6",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "babel src/index.js -d dist",
-    "start": "npm run build && nodemon src/index.js"
+    "build": "babel src/server.js -d dist",
+    "start": "npm run build && nodemon src/server.js"
   },
   "repository": {
     "type": "git",
