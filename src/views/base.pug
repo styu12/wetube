@@ -1,0 +1,19 @@
+include mixins/video.pug
+
+doctype html 
+html(lang="ko")
+    head 
+        title #{pageTitle} | Wetube
+        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+    body 
+        header 
+            small Welcome
+        main
+            ul 
+                each v in videos 
+                   +video(v)
+                else 
+                    li Sorry, Nothing found.
+            h1=pageTitle
+            block content
+            include partials/footer.pug
