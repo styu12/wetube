@@ -15,7 +15,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var PORT = 4000;
 var app = (0, _express["default"])();
 var logger = (0, _morgan["default"])("dev");
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
 app.use(logger);
+app.use(_express["default"].urlencoded({
+  extended: true
+}));
 app.use("/", _globalRouter["default"]);
 app.use("/users", _userRouter["default"]);
 app.use("/videos", _videoRouter["default"]);
