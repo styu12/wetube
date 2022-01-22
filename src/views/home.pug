@@ -3,8 +3,6 @@ include mixins/video.pug
 
 block content 
     h2 Welcome to Wetube
-    h3 
-        a(href="/videos/upload") Upload New Video
     ul 
         each v in videos 
             +video(v)

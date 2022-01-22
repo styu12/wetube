@@ -3,5 +3,10 @@ extends base.pug
 block content 
     h2 Edit Videos
     form(method="POST")
-        input(name="title", placeholder="Video Title", value=video.title, required)
+        span title
+        input(name="title", type="text", placeholder="Video Title", value=video.title, required, maxlength=50)
+        span description
+        input(name="description", type="text", placeholder="Description", value=video.description, required, minlength=20)
+        span hashtags
+        input(name="hashtags", type="text", placeholder="tag1,tag2,tag3,...", required, value=video.hashtags.join())
         input(type="submit", value="Save")
