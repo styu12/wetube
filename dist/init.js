@@ -4,6 +4,8 @@ require("./db.js");
 
 require("./models/Video.js");
 
+require("./models/User.js");
+
 var _server = _interopRequireDefault(require("./server.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
