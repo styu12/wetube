@@ -7,11 +7,16 @@ html(lang="ko")
         header 
             small Welcome
         main
-            div 
-                span 
-                    a(href="/videos/upload") Upload New Video
-                span 
-                    a(href="/") Home
+            nav
+                ul  
+                    li 
+                        a(href="/videos/upload") Upload New Video
+                    li 
+                        a(href="/") Home
+                    li 
+                        a(href="/search") Search Videos
+                    li 
+                        a(href="/join") Join
             h1=pageTitle
             block content
             include partials/footer.pug
