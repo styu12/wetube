@@ -4,9 +4,10 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   email: { type: String, required: true, unique: true, trim: true },
+  isGit: { type: Boolean, default: false },
   username: { type: String, required: true, unique: true, trim: true },
   name: { type: String, required: true, trim: true },
-  password: { type: String, required: true, trim: true },
+  password: { type: String, trim: true },
   location: { type: String, trim: true },
 });
 

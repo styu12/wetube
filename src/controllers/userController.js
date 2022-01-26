@@ -77,6 +77,7 @@ export const postLogin = async (req, res) => {
 };
 
 export const githubLoginStart = (req, res) => {
+  //redirecting user to github Page and make him choose to authorize
   const baseUrl = "https://github.com/login/oauth/authorize";
   const config = {
     client_id: process.env.GH_CLIENT,
@@ -90,6 +91,7 @@ export const githubLoginStart = (req, res) => {
 };
 
 export const githubLoginEnd = async (req, res) => {
+  //being ready for getting access_token
   const baseUrl = "https://github.com/login/oauth/access_token";
   const config = {
     client_id: process.env.GH_CLIENT,
@@ -99,6 +101,7 @@ export const githubLoginEnd = async (req, res) => {
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
 
+  // converting code to access_token
   const tokenRequest = await (
     await fetch(finalUrl, {
       method: "POST",
@@ -107,19 +110,60 @@ export const githubLoginEnd = async (req, res) => {
       },
     })
   ).json();
-  res.send(JSON.stringify(tokenRequest));
 
+  // when access_token is available
   if (tokenRequest.access_token) {
     const { access_token } = tokenRequest;
-    const userRequest = await (
-      await fetch("https://api.github.com/user", {
+    const apiUrl = "https://api.github.com";
+    // github User data
+    const userData = await (
+      await fetch(`${apiUrl}/user`, {
         method: "GET",
         headers: {
           Authorization: `token ${access_token}`,
         },
       })
     ).json();
-    console.log(userRequest);
+    console.log(userData);
+
+    // github UserEmail data
+    const emailData = await (
+      await fetch(`${apiUrl}/user/emails`, {
+        method: "GET",
+        headers: {
+          Authorization: `token ${access_token}`,
+        },
+      })
+    ).json();
+    const emailObj = emailData.find(
+      (e) => e.primary === true && e.verified === true
+    );
+    if (!emailObj) {
+      return res.redirect("/login");
+    }
+
+    const existingUser = await User.findOne({ email: emailObj.email });
+    if (existingUser) {
+      // existing Email? then, login by existing User
+      req.session.loggedIn = true;
+      req.session.user = existingUser;
+      console.log("existing user log in!");
+      return res.redirect("/");
+    } else {
+      // create new account - github account
+      const newUser = await User.create({
+        email: emailObj.email,
+        isGit: true,
+        password: "",
+        username: userData.login,
+        name: `Github_${userData.login}`,
+        location: userData.location,
+      });
+      req.session.loggedIn = true;
+      req.session.user = newUser;
+      console.log("create New Account");
+      return res.redirect("/");
+    }
   } else {
     console.log("No Access Token!");
     return res.redirect("/login");
