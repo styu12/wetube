@@ -1,5 +1,7 @@
 "use strict";
 
+require("dotenv/config");
+
 require("./db.js");
 
 require("./models/Video.js");
