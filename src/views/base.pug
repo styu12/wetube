@@ -17,9 +17,11 @@ html(lang="ko")
                         a(href="/search") Search Videos
                     if loggedIn 
                         li 
-                            a(href="/logout") Log Out 
+                            a(href="/users/logout") Log Out 
                         li 
-                            a(href="/profile") #{loggedInUser.name}'s Profile 
+                            a(href="/users/edit") Edit Profile
+                        li 
+                            a(href="/") #{loggedInUser.name}'s Profile
                     else 
                         li 
                             a(href="/login") Login
