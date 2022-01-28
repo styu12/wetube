@@ -22,14 +22,12 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
-    cookie: {
-      maxAge: 20000,
-    },
   })
 );
 
 app.use(localsMiddleware);
 
+app.use("/uploads", express.static("uploads"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);

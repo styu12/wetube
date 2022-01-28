@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const videoSchema = new Schema({
   title: { type: String, required: true, trim: true, maxLength: 50 },
+  fileUrl: { type: String, required: true },
   description: { type: String, required: true, trim: true, minLength: 20 },
   createdAt: { type: Date, required: true, default: Date.now },
   hashtags: [{ type: String, required: true, trim: true }],
