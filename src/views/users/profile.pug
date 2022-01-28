@@ -1,0 +1,9 @@
+extends ../base.pug
+include ../mixins/video.pug
+
+block content   
+    h1 Hello
+    each v in user.videos 
+        +video(v)
+    else 
+        p No Videos Yet.
