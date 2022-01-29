@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "babel src/init.js -d dist",
-    "start": "npm run build && nodemon src/init.js"
+    "start": "npm run build && nodemon src/init.js",
+    "assets": "webpack --config webpack.config.cjs"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,14 @@
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
-    "nodemon": "^2.0.15"
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.5.3",
+    "nodemon": "^2.0.15",
+    "sass": "^1.49.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
   }
 }
