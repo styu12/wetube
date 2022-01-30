@@ -8,10 +8,10 @@ block content
         input(name="username", type="text", required, placeholder="Username")
         input(name="password", type="password", required, placeholder="Password")
         input(type="submit" value="Login")
-    a(href="/users/github") Login by Github account
-    hr
+    a(href="/users/github").socialLogin.github
+        i.fab.fa-github 
+            span Login by Github account
 
-    div 
-        p Doesn't have an account yet? 
-        a(href="/join") Join Now &rarr;
+    p.subLinkText Doesn't have an account yet? 
+    a(href="/join").subLink Join Now &rarr;
     

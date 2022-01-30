@@ -7,7 +7,7 @@
   "scripts": {
     "build": "babel src/init.js -d dist",
     "start": "npm run build && nodemon src/init.js",
-    "assets": "webpack --config webpack.config.cjs"
+    "assets": "webpack"
   },
   "repository": {
     "type": "git",

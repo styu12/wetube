@@ -1,0 +1,16 @@
+.socialLogin {
+  display: block;
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 530px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.socialLogin.github {
+  background-color: #00b894;
+  i {
+    color: white;
+    font-size: 17px;
+  }
+}

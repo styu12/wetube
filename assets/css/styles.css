@@ -1,6 +1,341 @@
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/scss/styles.scss ***!
   \**********************************************************************************************************************/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
 body {
-  background-color: red;
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 80px;
+}
+header .header-logo {
+  font-size: 45px;
+  color: #ff3e37;
+}
+header .header-nav {
+  font-size: 15px;
+}
+header .header-nav ul {
+  display: flex;
+  align-items: center;
+}
+header .header-nav ul li {
+  margin-left: 25px;
+}
+header .header-nav ul li.login-btn {
+  background-color: white;
+  padding: 12px 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.video-mixin {
+  display: flex;
+  flex-direction: column;
+}
+.video-mixin .video-mixin__thumb {
+  width: 100%;
+  height: 160px;
+  background-color: ivory;
+  border-radius: 13px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color, 0.5s;
+}
+.video-mixin .video-mixin__thumb:hover {
+  background-color: #ff3e37;
+}
+.video-mixin .video-mixin__thumb a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.video-mixin .video-mixin__title {
+  font-size: 18px;
+  margin: 7px 0;
+}
+.video-mixin .video-mixin__hashtags {
+  display: flex;
+  flex-direction: row;
+}
+.video-mixin .video-mixin__hashtags li {
+  background-color: white;
+  color: black;
+  margin: 10px 0;
+  padding: 5px 3px;
+  margin-right: 7px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+.video-mixin .video-mixin__meta {
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+  margin: 50px auto;
+  font-size: 13px;
+}
+
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  position: relative;
+}
+form label {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+form input {
+  all: unset;
+  padding: 15px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 15px;
+  color: white;
+}
+form input::placeholder {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+form input[type=submit] {
+  border-radius: 10px;
+  background-color: #ff3e37;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.searchInInput {
+  position: absolute;
+  right: 55px;
+  top: 45px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 25px auto;
+  display: block;
+}
+
+.subLink {
+  margin: 15px auto;
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.subLinkText {
+  font-size: 14px;
+  text-align: center;
+}
+
+.socialLogin {
+  display: block;
+  margin: 20px auto;
+  padding: 20px 30px;
+  max-width: 530px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.socialLogin.github {
+  background-color: #00b894;
+}
+.socialLogin.github i {
+  color: white;
+  font-size: 17px;
+}
+
+.video-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+
+.watchContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+.watchContainer video {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.watchContainer .video-titleBox {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+.watchContainer .video-titleBox .video-title {
+  font-size: 20px;
+  margin-right: 15px;
+}
+.watchContainer .video-titleBox .video-desc {
+  font-size: 15px;
+  margin: 10px 0;
+}
+.watchContainer .video-titleBox .video-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #212121;
+  color: white;
+}
+
+main {
+  padding-top: 70px;
 }

@@ -5,9 +5,10 @@ block content
 
     form(method="GET")
         input(name="keyword", type="text", placeholder="Search by Video Title")
+        i.fas.fa-search.searchInInput
         input(type="submit" value="Search Now")
 
-    div 
+    div.video-container 
         each v in videos
             +video(v)
         

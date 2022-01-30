@@ -1,0 +1,46 @@
+.video-mixin {
+  display: flex;
+  flex-direction: column;
+
+  .video-mixin__thumb {
+    width: 100%;
+    height: 160px;
+    background-color: ivory;
+    border-radius: 13px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background-color, 0.5s;
+    &:hover {
+      background-color: $red;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  .video-mixin__title {
+    font-size: 18px;
+    margin: 7px 0;
+  }
+
+  .video-mixin__hashtags {
+    display: flex;
+    flex-direction: row;
+    li {
+      background-color: white;
+      color: black;
+      margin: 10px 0;
+      padding: 5px 3px;
+      margin-right: 7px;
+      border-radius: 5px;
+      font-size: 10px;
+    }
+  }
+
+  .video-mixin__meta {
+    font-size: 12px;
+  }
+}

@@ -1,16 +1,20 @@
 extends base.pug
 
 block content 
-    video(src="/"+video.fileUrl, autoplay, controls)
-    div     
-        p=video.description
-        small=video.createdAt
-    div 
-        small By 
-            a(href=`/users/${video.owner._id}`)=video.owner.name
-    if loggedIn
-        if String(video.owner._id) === String(loggedInUser._id)
-            p
-                a(href=`${video.id}/edit`) Edit Video &rarr;
-            p
-                a(href=`${video.id}/delete`) Delete Video &rarr;
+    div.watchContainer
+        video(src="/"+video.fileUrl, autoplay, controls)
+        div  
+            div.video-titleBox
+                span.video-title=video.title
+                img(src="/"+video.owner.avatarUrl).video-avatar
+                span 
+                    a(href=`/users/${video.owner._id}`)=video.owner.name
+            p.video-desc=video.description
+            small=video.createdAt
+                
+        if loggedIn
+            if String(video.owner._id) === String(loggedInUser._id)
+                p
+                    a(href=`${video.id}/edit`) Edit Video &rarr;
+                p
+                    a(href=`${video.id}/delete`) Delete Video &rarr;

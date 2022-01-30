@@ -1,0 +1,30 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 80px;
+
+  .header-logo {
+    font-size: 45px;
+    color: $red;
+  }
+
+  .header-nav {
+    font-size: 15px;
+    ul {
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-left: 25px;
+      }
+      li.login-btn {
+        background-color: white;
+        padding: 12px 10px;
+        border-radius: 5px;
+        color: black;
+      }
+    }
+  }
+}

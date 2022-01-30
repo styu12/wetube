@@ -2,8 +2,9 @@ extends ../base.pug
 include ../mixins/video.pug
 
 block content   
-    h1 Hello
-    each v in user.videos 
-        +video(v)
-    else 
-        p No Videos Yet.
+    img(src="/" + user.avatarUrl).avatar
+    div.video-container
+        each v in user.videos 
+            +video(v)
+        else 
+            p No Videos Yet.

@@ -2,32 +2,12 @@ doctype html
 html(lang="ko")
     head 
         title #{pageTitle} | #{siteName}
-        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet", href="/assets/css/styles.css")
     body 
-        header 
-            small Welcome
+        include partials/header.pug
         main
-            nav
-                ul  
-                    li 
-                        a(href="/") Home
-                    li 
-                        a(href="/search") Search Videos
-                    if loggedIn 
-                        li 
-                            a(href="/videos/upload") Upload New Video
-                        li 
-                            a(href=`/users/${loggedInUser._id}`) My Profile
-                        li 
-                            a(href="/users/edit") Edit Profile
-                        li 
-                            a(href="/users/logout") Log Out 
-                    else 
-                        li 
-                            a(href="/login") Login
-                        li 
-                            a(href="/join") Join
-            h1=pageTitle
             block content
-            include partials/footer.pug
-        script(src="/assets/js/main.js")
+        include partials/footer.pug
+    script(src="https://kit.fontawesome.com/c8ba55b36c.js", crossorigin="anonymous")
+    script(src="/assets/js/main.js")
+

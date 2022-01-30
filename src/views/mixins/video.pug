@@ -1,10 +1,11 @@
 mixin video(v)
-     div 
-        h4 
-            a(href=`/videos/${v.id}`)=v.title 
-        ul 
+     div.video-mixin 
+        div.video-mixin__thumb
+            a(href=`/videos/${v.id}`)
+        a(href=`/videos/${v.id}`).video-mixin__title=v.title 
+        ul.video-mixin__hashtags
             each tag in v.hashtags
                 li=tag
-        p=v.description 
-        small=v.createdAt 
-        hr
+        div.video-mixin__meta
+            span #{v.meta.views} views •  
+            span #{v.owner.name}
