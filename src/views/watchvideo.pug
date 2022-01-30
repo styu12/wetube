@@ -2,19 +2,32 @@ extends base.pug
 
 block content 
     div.watchContainer
-        video(src="/"+video.fileUrl, autoplay, controls)
-        div  
-            div.video-titleBox
-                span.video-title=video.title
-                img(src="/"+video.owner.avatarUrl).video-avatar
-                span 
-                    a(href=`/users/${video.owner._id}`)=video.owner.name
-            p.video-desc=video.description
-            small=video.createdAt
+        video(src="/"+video.fileUrl, autoplay)
+        button#play Play 
+        button#mute Mute
+        div     
+            span#currentTime 00:00
+            span  / 
+            span#totalTime 00:00
+        input(type="range", min="0", max="1", step="0.1")#volume
+        div
+            input(type="range", min="0", step="1", value="0")#timeBar
+
+        //- div  
+        //-     div.video-titleBox
+        //-         span.video-title=video.title
+        //-         img(src="/"+video.owner.avatarUrl).video-avatar
+        //-         span 
+        //-             a(href=`/users/${video.owner._id}`)=video.owner.name
+        //-     p.video-desc=video.description
+        //-     small=video.createdAt
                 
-        if loggedIn
-            if String(video.owner._id) === String(loggedInUser._id)
-                p
-                    a(href=`${video.id}/edit`) Edit Video &rarr;
-                p
-                    a(href=`${video.id}/delete`) Delete Video &rarr;
+        //- if loggedIn
+        //-     if String(video.owner._id) === String(loggedInUser._id)
+        //-         p
+        //-             a(href=`${video.id}/edit`) Edit Video &rarr;
+        //-         p
+        //-             a(href=`${video.id}/delete`) Delete Video &rarr;
+
+block script 
+    script(src="/assets/js/videoPlayer.js")

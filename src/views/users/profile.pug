@@ -2,7 +2,9 @@ extends ../base.pug
 include ../mixins/video.pug
 
 block content   
-    img(src="/" + user.avatarUrl).avatar
+    if user.avatarUrl 
+        img(src="/" + user.avatarUrl).avatar
+    p.profile-username=user.username
     div.video-container
         each v in user.videos 
             +video(v)

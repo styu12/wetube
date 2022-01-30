@@ -8,12 +8,13 @@
 @import "./components//footer.scss";
 @import "./components/form.scss";
 @import "./components/shared.scss";
-@import "./components/subLink.scss";
+@import "./components/authChange.scss";
 @import "./components/socialLogin.scss";
 
 // Screens
 @import "./screens/home.scss";
 @import "./screens/watchVideo.scss";
+@import "./screens/profile.scss";
 
 // Defaults
 a {
