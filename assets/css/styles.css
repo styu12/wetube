@@ -5,6 +5,10 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -293,6 +297,81 @@ form input[type=submit] {
   font-size: 17px;
 }
 
+#videoContainer {
+  position: relative;
+}
+#videoContainer video {
+  width: 100%;
+  cursor: pointer;
+}
+#videoContainer #videoControls {
+  display: flex;
+  opacity: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 30px;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+}
+#videoContainer #videoControls > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#videoContainer #videoControls #play,
+#videoContainer #videoControls #mute,
+#videoContainer #videoControls #volume {
+  margin-right: 15px;
+}
+#videoContainer #videoControls input[type=range] {
+  -webkit-appearance: none;
+  background-color: transparent;
+  height: 5px;
+  cursor: pointer;
+}
+#videoContainer #videoControls input[type=range]::-webkit-slider-runnable-track {
+  background-color: rgba(178, 190, 195, 0.2);
+  height: 5px;
+}
+#videoContainer #videoControls input[type=range]#volume {
+  background: linear-gradient(to right, white 50%, transparent 50%);
+  width: 70px;
+  border-radius: 10px;
+}
+#videoContainer #videoControls input[type=range]#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-2.5px);
+  border-radius: 50%;
+}
+#videoContainer #videoControls input[type=range]#timeBar {
+  position: absolute;
+  width: calc(100% - 60px);
+  top: 0;
+  height: 3px;
+}
+#videoContainer #videoControls input[type=range]#timeBar::-webkit-slider-thumb {
+  opacity: 0;
+  background-color: transparent;
+}
+#videoContainer #videoControls input[type=range]#timeBar::-webkit-slider-runnable-track {
+  height: 3px;
+}
+#videoContainer #videoControls i {
+  cursor: pointer;
+  font-size: 17px;
+}
+#videoContainer #videoControls.showing {
+  opacity: 1;
+}
+
 .video-container {
   max-width: 960px;
   margin: 0 auto;
@@ -304,7 +383,6 @@ form input[type=submit] {
 .watchContainer {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 50px;
 }
 .watchContainer video {
   width: 100%;
