@@ -67,9 +67,6 @@ if (video.readyState >= 2) {
 }
 
 const handleTimeUpdate = () => {
-  if (video.currentTime === video.duration) {
-    playIcon.classList = "fas fa-play";
-  }
   currentTime.innerText = formatTime(Math.floor(video.currentTime));
   timeBar.value = Math.floor(video.currentTime);
   styleInput(timeBar, "#ff3e37");
@@ -127,7 +124,6 @@ const handleKeydown = (event) => {
   videoControls.classList.add("showing");
   keydownTimeout = setTimeout(hideControls, 3000);
   const { keyCode } = event;
-  console.log(keyCode);
   switch (keyCode) {
     case 39:
       video.currentTime += 1;
@@ -143,12 +139,21 @@ const handleKeydown = (event) => {
   }
 };
 
+const handleEnded = () => {
+  playIcon.classList = "fas fa-play";
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/view`, {
+    method: "POST",
+  });
+};
+
 playBtn.addEventListener("click", handlePlay);
 muteBtn.addEventListener("click", handleMute);
 volumeBar.addEventListener("input", handleVolumeBar);
 video.addEventListener("loadedmetadata", handleMetaData);
 video.addEventListener("timeupdate", handleTimeUpdate);
 video.addEventListener("click", handlePlay);
+video.addEventListener("ended", handleEnded);
 timeBar.addEventListener("input", handleTimeBar);
 fullScreenBtn.addEventListener("click", handleFullScreen);
 videoContainer.addEventListener("mousemove", handleMouseMove);

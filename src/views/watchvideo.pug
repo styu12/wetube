@@ -1,7 +1,7 @@
 extends base.pug
 
 block content 
-    div.watchContainer#videoContainer
+    div.watchContainer#videoContainer(data-id=video._id)
         video(src="/"+video.fileUrl)
         div#videoControls
             div
@@ -18,22 +18,6 @@ block content
             div
                 span#fullScreen
                         i.fas.fa-expand
-
-        //- div  
-        //-     div.video-titleBox
-        //-         span.video-title=video.title
-        //-         img(src="/"+video.owner.avatarUrl).video-avatar
-        //-         span 
-        //-             a(href=`/users/${video.owner._id}`)=video.owner.name
-        //-     p.video-desc=video.description
-        //-     small=video.createdAt
-                
-        //- if loggedIn
-        //-     if String(video.owner._id) === String(loggedInUser._id)
-        //-         p
-        //-             a(href=`${video.id}/edit`) Edit Video &rarr;
-        //-         p
-        //-             a(href=`${video.id}/delete`) Delete Video &rarr;
-
+                        
 block script 
     script(src="/assets/js/videoPlayer.js")
