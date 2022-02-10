@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Video from "../models/Video.js";
+import Comment from "../models/Comment.js";
 
 export const home = async (req, res) => {
   const videos = await Video.find({})
@@ -9,7 +10,8 @@ export const home = async (req, res) => {
 };
 export const watch = async (req, res) => {
   const { id } = req.params;
-  const video = await Video.findById(id).populate("owner");
+  const video = await Video.findById(id).populate("owner").populate("comments");
+  console.log(video);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video Not Found." });
   }
@@ -28,6 +30,7 @@ export const getEdit = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "Video Not Found." });
   }
   if (String(video.owner) !== String(_id)) {
+    req.flash("error", "You are not owner of the video.");
     return res.status(403).redirect("/");
   }
   return res.render("editvideo", {
@@ -46,6 +49,7 @@ export const postEdit = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "Video Not Found." });
   }
   if (String(video.owner) !== String(_id)) {
+    req.flash("error", "You are not owner of the video.");
     return res.status(403).redirect("/");
   }
   await Video.findByIdAndUpdate(id, {
@@ -53,6 +57,7 @@ export const postEdit = async (req, res) => {
     description,
     hashtags: Video.formatHashtags(hashtags),
   });
+  req.flash("success", "Edit Success!");
   return res.redirect(`/videos/${id}`);
 };
 
@@ -81,6 +86,7 @@ export const postUpload = async (req, res) => {
     const owner = await User.findById(_id);
     owner.videos.push(newVideo._id);
     await owner.save();
+    req.flash("success", "Upload Success!");
     return res.redirect("/");
   } catch (error) {
     console.log(error);
@@ -114,6 +120,7 @@ export const deleteVideo = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "Video Not Found." });
   }
   if (String(video.owner) !== String(_id)) {
+    req.flash("error", "You are not owner of the video.");
     return res.status(403).redirect("/");
   }
   const owner = await User.findById(_id);
@@ -121,6 +128,7 @@ export const deleteVideo = async (req, res) => {
 
   await Video.findByIdAndDelete(id);
   await owner.save();
+  req.flash("success", "Delete Success!");
   return res.redirect("/");
 };
 
@@ -133,4 +141,24 @@ export const registerView = async (req, res) => {
   video.meta.views += 1;
   await video.save();
   return res.sendStatus(200);
+};
+
+export const addComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { text },
+    session: { user },
+  } = req;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(404);
+  }
+  const newComment = await Comment.create({
+    text,
+    author: user._id,
+    video: id,
+  });
+  video.comments.push(newComment._id);
+  await video.save();
+  return res.sendStatus(201);
 };

@@ -40,6 +40,7 @@ export const postJoin = async (req, res) => {
       name,
       location,
     });
+    req.flash("success", "Join Success!");
     return res.redirect("/login");
   } catch (error) {
     return res.status(400).render("users/join", {
@@ -74,6 +75,7 @@ export const postLogin = async (req, res) => {
   req.session.loggedIn = true;
   req.session.user = user;
 
+  req.flash("success", "Login Success! Welcome to Wetube.");
   return res.redirect("/");
 };
 
@@ -139,6 +141,7 @@ export const githubLoginEnd = async (req, res) => {
       (e) => e.primary === true && e.verified === true
     );
     if (!emailObj) {
+      req.flash("error", "You don't have verified email");
       return res.redirect("/login");
     }
 
@@ -157,9 +160,10 @@ export const githubLoginEnd = async (req, res) => {
     }
     req.session.loggedIn = true;
     req.session.user = user;
+    req.flash("success", "Login success! Welcome to Wetube.");
     return res.redirect("/");
   } else {
-    console.log("No Access Token!");
+    req.flash("error", "Invalid Access Token!");
     return res.redirect("/login");
   }
 };
@@ -215,12 +219,14 @@ export const postEdit = async (req, res) => {
   );
   req.session.user = updatedUser;
 
+  req.flash("success", "Edit Success!");
   return res.redirect("/users/edit");
 };
 
 export const getChangePassword = (req, res) => {
   const user = req.session.user;
   if (user.socialOnly) {
+    req.flash("error", "Social Login Member has no password.");
     return res.redirect("/");
   }
   return res.render("users/changePassword", { pageTitle: "Change Password" });
@@ -255,6 +261,7 @@ export const postChangePassword = async (req, res) => {
   user.password = newPw;
   await user.save();
 
+  req.flash("success", "Password Change Success!");
   return res.redirect("/users/logout");
 };
 
@@ -275,6 +282,5 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not Found." });
   }
-  console.log(user);
   return res.render("users/profile", { pageTitle: user.name, user });
 };

@@ -246,6 +246,10 @@ form input::placeholder {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
 }
+form textarea {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
 form input[type=submit] {
   border-radius: 10px;
   background-color: #ff3e37;
@@ -373,6 +377,37 @@ form input[type=submit] {
   opacity: 1;
 }
 
+@keyframes goAway {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+.message {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  width: 300px;
+  border-radius: 13px;
+  margin: auto;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 15px;
+  animation: goAway 0.5s ease 3s forwards;
+}
+.message.error {
+  background-color: #ff3e37;
+}
+.message.success {
+  background-color: #55efc4;
+  color: black;
+}
+
 .video-container {
   max-width: 960px;
   margin: 0 auto;
@@ -407,6 +442,19 @@ form input[type=submit] {
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.commentContainer {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+.commentContainer .comment {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 17px;
 }
 
 #previewContainer {

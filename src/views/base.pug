@@ -1,9 +1,15 @@
+include mixins/messages.pug
+
 doctype html 
 html(lang="ko")
     head 
         title #{pageTitle} | #{siteName}
         link(rel="stylesheet", href="/assets/css/styles.css")
     body 
+        if messages.error 
+            +messages("error", messages.error)
+        if messages.success 
+            +messages("success", messages.success)
         include partials/header.pug
         main
             block content

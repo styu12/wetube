@@ -120,6 +120,9 @@ const handleMouseLeave = () => {
 };
 
 const handleKeydown = (event) => {
+  if (event.target.id === "commentTextarea") {
+    return;
+  }
   endTimeout();
   videoControls.classList.add("showing");
   keydownTimeout = setTimeout(hideControls, 3000);

@@ -17,6 +17,7 @@ const userSchema = new Schema({
   },
   location: { type: String, trim: true },
   videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 userSchema.pre("save", async function () {

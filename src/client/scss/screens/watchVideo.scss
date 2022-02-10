@@ -29,3 +29,16 @@
     }
   }
 }
+
+.commentContainer {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  .comment {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 17px;
+  }
+}

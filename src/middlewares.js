@@ -11,6 +11,7 @@ export const userOnlyMiddleware = (req, res, next) => {
   if (req.session.loggedIn) {
     return next();
   } else {
+    req.flash("error", "Log in first.");
     return res.redirect("/login");
   }
 };
@@ -19,6 +20,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
   if (!req.session.loggedIn) {
     return next();
   } else {
+    req.flash("error", "Log out first.");
     return res.redirect("/");
   }
 };
