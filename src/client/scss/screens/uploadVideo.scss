@@ -1,0 +1,24 @@
+#previewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  #preview {
+    width: 1024px;
+    height: 576px;
+  }
+  #actionBtn {
+    width: 130px;
+    height: 50px;
+    background-color: $red;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+    &:disabled {
+      background-color: rgba($color: $red, $alpha: 0.3);
+      color: rgba($color: white, $alpha: 0.3);
+    }
+  }
+}

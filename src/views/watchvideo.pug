@@ -18,6 +18,10 @@ block content
             div
                 span#fullScreen
                         i.fas.fa-expand
-                        
+    if(loggedInUser._id.toString() == video.owner._id.toString()) 
+        div
+            a(href=`${video._id}/edit`) Edit Video &rarr;
+        div 
+            a(href=`${video._id}/delete`) Delete Video &rarr;
 block script 
     script(src="/assets/js/videoPlayer.js")
