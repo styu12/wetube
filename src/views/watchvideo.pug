@@ -24,10 +24,9 @@ block content
             p.videoDate=new Date(video.createdAt).getFullYear()     
     if loggedIn
         if(loggedInUser._id.toString() == video.owner._id.toString()) 
-            div
-                a(href=`${video._id}/edit`) Edit Video &rarr;
-            div 
-                a(href=`${video._id}/delete`) Delete Video &rarr;
+            a(href=`${video._id}/edit`) Edit Video &rarr;
+            br
+            a(href=`${video._id}/delete`) Delete Video &rarr;
         
         form.video__commentForm#commentForm
             textarea(cols="30", rows="10", placeholder="Add some comments...", id="commentTextarea")
@@ -36,9 +35,11 @@ block content
     div.commentContainer
         ul 
             each comment in video.comments.reverse()
-                li.comment 
+                li.comment(data-id=comment._id) 
                     i.fas.fa-comment
-                    |  #{comment.text}
+                    span  #{comment.text}
+                    if(loggedInUser._id.toString() == comment.author.toString())
+                        span.deleteBtn  ❌
 block script 
     script(src="/assets/js/videoPlayer.js")
     if loggedIn 

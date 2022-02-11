@@ -316,7 +316,7 @@ form input[type=submit] {
   height: 80px;
   padding: 0 30px;
   position: absolute;
-  bottom: 15px;
+  bottom: 64px;
   left: 0;
   display: flex;
   align-items: center;
@@ -455,6 +455,11 @@ form input[type=submit] {
   padding: 10px 20px;
   border-radius: 20px;
   margin-bottom: 17px;
+}
+.commentContainer .deleteBtn {
+  float: right;
+  vertical-align: top;
+  cursor: pointer;
 }
 
 #previewContainer {
