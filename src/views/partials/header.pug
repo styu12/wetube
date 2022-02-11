@@ -18,7 +18,10 @@ header
                         if !loggedInUser.avatarUrl
                             | My Profile 
                         else 
-                            img.header-avatar(src="/"+loggedInUser.avatarUrl)
+                            if loggedInUser.avatarUrl.includes("github")
+                                img.header-avatar(src=loggedInUser.avatarUrl)
+                            else 
+                                img.header-avatar(src="/"+loggedInUser.avatarUrl)
             else 
                 li.login-btn 
                     a(href="/login") Login
