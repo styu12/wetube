@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "regenerator-runtime/runtime.js";
 import "./db.js";
 import "./models/Video.js";
 import "./models/User.js";

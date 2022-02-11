@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Youtube clone with Node JS, Express, MongoDB, and ES6",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "build": "babel src/init.js -d dist",
-    "start": "npm run build && nodemon src/init.js",
-    "assets": "webpack"
+    "build": "npm run build:server && npm run build:assets",
+    "start": "node build/init.js",
+    "build:server": "babel src -d build",
+    "build:assets": "webpack --mode=production",
+    "dev:assets": "webpack --mode=development -w"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,7 @@
     "mongoose": "^6.1.7",
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
-    "node-fetch": "^3.2.0",
+    "node-fetch": "^2.6.7",
     "pug": "^3.0.2"
   },
   "devDependencies": {
