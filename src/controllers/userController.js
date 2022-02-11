@@ -84,7 +84,7 @@ export const githubLoginStart = (req, res) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
   const config = {
     client_id: process.env.GH_CLIENT,
-    redirect_uri: "http://localhost:4000/users/github/callback",
+    // redirect_uri: "http://localhost:4000/users/github/callback",
     allow_signup: false,
     scope: "read:user user:email",
   };
