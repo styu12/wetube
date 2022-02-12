@@ -4,7 +4,7 @@ block content
     if errorMessage 
         span=errorMessage
 
-    img(src="/"+loggedInUser.avatarUrl).avatar
+    img(src=loggedInUser.avatarUrl, crossorigin).avatar
     form(method="POST", enctype="multipart/form-data")
         label(for="avatar") Profile Image
         input(name="avatar", id="avatar", type="file", accept="image/*")
