@@ -5,21 +5,9 @@
   .video-mixin__thumb {
     width: 100%;
     height: 160px;
-    background-size: cover;
-    background-position: center center;
     border-radius: 13px;
     margin-bottom: 15px;
     cursor: pointer;
-    transition: background-color, 0.5s;
-    &:hover {
-      background-color: $red;
-    }
-
-    a {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
   }
 
   .video-mixin__title {

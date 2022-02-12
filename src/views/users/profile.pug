@@ -3,7 +3,7 @@ include ../mixins/video.pug
 
 block content   
     if user.avatarUrl 
-        img(src="/" + user.avatarUrl).avatar
+        img(src=user.avatarUrl crossorigin).avatar
     p.profile-username=user.username
     div.video-container
         each v in user.videos 
