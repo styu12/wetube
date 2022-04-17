@@ -1,3 +1,24 @@
+
+.filter-container {
+  height: 100px;
+  padding: 0 50px;
+  .filter-list {
+    display: flex;
+    .filter {
+      margin-right: 15px;
+      border: 1px solid #7f8c8d;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 5px 13px;
+      cursor: pointer;
+    }
+    .filter.active {
+      background-color: #7f8c8d;
+      border: 1px solid white;
+    }
+  }
+}
+
 .video-container {
   max-width: 960px;
   margin: 0 auto;

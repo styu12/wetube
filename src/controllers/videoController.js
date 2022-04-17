@@ -3,10 +3,23 @@ import Video from "../models/Video.js";
 import Comment from "../models/Comment.js";
 
 export const home = async (req, res) => {
-  const videos = await Video.find({})
+  const { hashtag } = req.query;
+  let videos = [];
+
+  const allVideos = await Video.find({})
+  .populate("owner")
+  .sort({ createdAt: "desc" });
+
+  if (hashtag && hashtag != "ALL") {
+    videos = await Video.find({ 
+      hashtags: hashtag
+     })
     .populate("owner")
     .sort({ createdAt: "desc" });
-  return res.render("home", { pageTitle: "Home", videos });
+  } else {
+    videos = allVideos;
+  }
+  return res.render("home", { pageTitle: "Home", videos, allVideos });
 };
 export const watch = async (req, res) => {
   const { id } = req.params;

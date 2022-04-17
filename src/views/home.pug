@@ -2,8 +2,23 @@ extends base.pug
 include mixins/video.pug
 
 block content 
+    form(id="tagForm", method="GET", action="/" style="display:none;")
+        input(id="tagInput", name="hashtag", type="text", placeholder="Search by Video Title")
+        input(type="submit" value="Search Now")
+
+    div.filter-container
+        ul.filter-list 
+            li.filter ALL
+            each v in allVideos
+                each tag in v.hashtags 
+                    li.filter=tag
+
     div.video-container
         each v in videos 
             +video(v)
         else 
             li Sorry, Nothing found.
+    
+
+block script 
+    script(src="/assets/js/homeTag.js")

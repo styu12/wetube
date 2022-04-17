@@ -6,6 +6,7 @@ const BASE_JS = "./src/client/js/";
 module.exports = {
   entry: {
     main: BASE_JS + "main.js",
+    homeTag: BASE_JS + "homeTag.js",
     videoPlayer: BASE_JS + "videoPlayer.js",
     recorder: BASE_JS + "recorder.js",
     commentForm: BASE_JS + "commentForm.js",
